@@ -57,6 +57,7 @@ export interface CanvasProps<T extends TLShape, M extends Record<string, unknown
   id?: string
   onBoundsChange: (bounds: TLBounds) => void
   hideCursors?: boolean
+  disableZoom?: boolean
 }
 
 function _Canvas<T extends TLShape, M extends Record<string, unknown>>({
@@ -81,6 +82,7 @@ function _Canvas<T extends TLShape, M extends Record<string, unknown>>({
   hideResizeHandles,
   hideRotateHandle,
   hideGrid,
+  disableZoom,
   onBoundsChange,
   hideCursors,
 }: CanvasProps<T, M>) {
@@ -90,7 +92,7 @@ function _Canvas<T extends TLShape, M extends Record<string, unknown>>({
 
   rZoomRef.current = pageState.camera.zoom
 
-  useZoomEvents(rZoomRef, rCanvas)
+  if (!disableZoom) useZoomEvents(rZoomRef, rCanvas)
 
   useResizeObserver(rCanvas, onBoundsChange)
 

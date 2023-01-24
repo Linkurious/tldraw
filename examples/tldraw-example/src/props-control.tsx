@@ -52,12 +52,12 @@ export default function Controlled() {
       },
     },
     pageStates: {
-      page1: {
+      page2: {
         id: 'page1',
         selectedIds: ['rect1'],
         camera: {
           point: [0, 0],
-          zoom: 1,
+          zoom: 0.51,
         },
       },
     },

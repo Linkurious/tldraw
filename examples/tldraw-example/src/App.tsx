@@ -7,6 +7,7 @@ import Api from './api'
 import ApiControl from './api-control'
 import Basic from './basic'
 import ChangingId from './changing-id'
+import CustomZoomSettings from './custom-zoom'
 import DarkMode from './dark-mode'
 import Develop from './develop'
 import Embedded from './embedded'
@@ -33,6 +34,7 @@ const pages: ({ path: string; component: any; title: string } | '---')[] = [
   { path: '/api', component: Api, title: 'Using the TldrawApp API' },
   { path: '/readonly', component: ReadOnly, title: 'Readonly mode' },
   { path: '/controlled', component: PropsControl, title: 'Controlled via props' },
+  { path: '/custom-zoom', component: CustomZoomSettings, title: 'Custom zoom settings' },
   { path: '/imperative', component: ApiControl, title: 'Controlled via the TldrawApp API' },
   { path: '/changing-id', component: ChangingId, title: 'Changing ID' },
   { path: '/custom-cursors', component: CustomCursorsExample, title: 'Custom Cursors' },

@@ -123,6 +123,10 @@ export type RendererProps<T extends TLShape, M = any> = Partial<TLCallbacks<T>> 
    */
   showDashedBrush?: boolean
   /**
+   * (optional) When true, the renderer will not allow zooming.
+   */
+  disableZoom?: boolean
+  /**
    * (optional) The size of the grid step.
    */
   grid?: number
@@ -174,6 +178,7 @@ function _Renderer<T extends TLShape, M extends Record<string, unknown>>({
   hideGrid = true,
   showDashedBrush = false,
   hideCursors,
+  disableZoom = false,
   ...rest
 }: RendererProps<T, M>) {
   useTLTheme(theme, '#' + id)
@@ -236,6 +241,7 @@ function _Renderer<T extends TLShape, M extends Record<string, unknown>>({
         components={components}
         meta={meta}
         hideCursors={hideCursors}
+        disableZoom={disableZoom}
       />
     </TLContext.Provider>
   )

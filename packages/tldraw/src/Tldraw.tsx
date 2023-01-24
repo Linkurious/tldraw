@@ -121,6 +121,11 @@ export interface TldrawProps extends TDCallbacks {
    * (optional) To hide cursors
    */
   hideCursors?: boolean
+
+  /**
+   * (optional) To disable zoom behaviour
+   */
+  disableZoom?: boolean
 }
 
 const isSystemDarkMode = window.matchMedia
@@ -164,6 +169,7 @@ export function Tldraw({
   onSessionEnd,
   onExport,
   hideCursors,
+  disableZoom,
 }: TldrawProps) {
   const [sId, setSId] = React.useState(id)
 
@@ -359,6 +365,7 @@ export function Tldraw({
           readOnly={readOnly}
           components={components}
           hideCursors={hideCursors}
+          disableZoom={disableZoom}
         />
       </AlertDialogContext.Provider>
     </TldrawContext.Provider>
@@ -380,6 +387,7 @@ interface InnerTldrawProps {
     Cursor?: CursorComponent
   }
   hideCursors?: boolean
+  disableZoom?: boolean
 }
 
 const InnerTldraw = React.memo(function InnerTldraw({
@@ -395,6 +403,7 @@ const InnerTldraw = React.memo(function InnerTldraw({
   showUI,
   components,
   hideCursors,
+  disableZoom,
 }: InnerTldrawProps) {
   const app = useTldrawApp()
   const [dialogContainer, setDialogContainer] = React.useState<any>(null)
@@ -581,6 +590,7 @@ const InnerTldraw = React.memo(function InnerTldraw({
                 onKeyUp={app.onKeyUp}
                 onDragOver={app.onDragOver}
                 onDrop={app.onDrop}
+                disableZoom={disableZoom}
               />
             </ErrorBoundary>
           </ContextMenu>
